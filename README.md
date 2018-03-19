@@ -9,7 +9,7 @@
 <div class="face-one-intro">
     <div class="face-one-intro-title">sync-state</div>
     <h2 class="face-one-intro-desc">
-        sync react state <br /><code>&lt;input {...sync(this, 'name')} /&gt;</code>
+        快速实现 defaultValue 的语法糖<br /><code>&lt;input {...sync('name')} /&gt;</code>
     </h2>
     <div class="face-one-intro-tool">
         <a href="https://onface.github.io/sync-state" class="face-one-intro-btn face-one-intro-btn--primary mr-online-hide" >在线文档</a>

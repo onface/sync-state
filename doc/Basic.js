@@ -19,12 +19,12 @@ class Basic extends React.Component {
         return (
             <div>
                 <pre>{jsonFormat(this.state)}</pre>
-                simple:
+                <h2>简单</h2>
                 <input type="text" {...sync('name')}  />
                 <input type="text" {...sync('user.title')}  />
-                <hr />
+                <h2>数组</h2>
                 <RandomArray {...sync('random')} />
-                <hr />
+                <h2>别名 & defaultValue</h2>
                 alias: value change
                 {/*
                    <Count count={1} onMount={function(count){...}} />
@@ -38,8 +38,7 @@ class Basic extends React.Component {
                        })
                    }
                />
-               <hr />
-               alias: value
+               <h2>复杂别名</h2>
                {/*
                    <Range start={1} end={2} onChange={fucntion (start, end) {}} />
                 */}

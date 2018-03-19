@@ -2,7 +2,7 @@
     "name": "sync-state",
     "main": "lib/index.js",
     "version": "0.1.0",
-    "description": "sync react state <input {...sync(self, 'name')} />",
+    "description": "快速实现 defaultValue 的语法糖 <input {...sync('name')} />",
     "keywords": "",
     "scripts": {
         "dev": "rm -rf output && fis3 release -w -d ./output -r ./ -f compile/fis-conf.js",
