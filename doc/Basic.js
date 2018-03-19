@@ -22,9 +22,16 @@ class Basic extends React.Component {
                 <h2>简单</h2>
                 <input type="text" {...sync('name')}  />
                 <input type="text" {...sync('user.title')}  />
+                <h2>defaultValue</h2>
+                <input
+                    type="text"
+                    {...sync('some', {
+                        defaultValue: 'default'
+                    })}
+                />
                 <h2>数组</h2>
                 <RandomArray {...sync('random')} />
-                <h2>别名 & defaultValue</h2>
+                <h2>别名</h2>
                 alias: value change
                 {/*
                    <Count count={1} onMount={function(count){...}} />
