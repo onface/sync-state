@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="theme/face/face.css">
+<meta name="keywords" content="">
+<meta name="description" content="文档">
+<title>文档</title>
+</head>
+<body>
+<div class="face-one-head">
+    <a class="face-one-head-logo" href="../index.html">
+        <img src="theme/media/logo.svg" alt="" class="face-one-head-logo-photo" />
+        face
+    </a>
+    <span class="face-one-head-slogan">
+        Write less code, do more things!
+    </span>
+    <!-- <div class="face-one-head-search">
+        <span class="face-one-head-search-icon fi fi-search"></span>
+        <input type="text" class="face-one-head-search-input" placeholder="搜索..." />
+    </div> -->
+    <div class="face-one-head-nav">
+        <span class="face-one-head-nav-switch fi fi-bars"></span>
+        <div class="face-one-head-nav-F-cnt">
+            <a href="../index.html" class="face-one-head-nav-link">首页</a>
+            <a href="intro.html" class="face-one-head-nav-link">指引</a>
+            <a href="index.html" class="face-one-head-nav-link">文档</a>
+        </div>
+        <script>
+        Array.from(document.querySelectorAll('.face-one-head-nav-link')).forEach(function (node) {
+            if (node.href) {
+                var pathname = node.href.replace(/\?.*/, '')
+                if (pathname === location.origin + location.pathname) {
+                    node.setAttribute('class', node.getAttribute('class') + ' ' + 'face-one-head-nav-link--on')
+                }
+            }
+        })
+        </script>
+    </div>
+</div>
+
+<div class="face-one-layout">
+<div class="face-one-layout-F-line">
+<div class="face-one-layout-sidebar">
+<div class="face-one-nav">
+<span class="face-one-nav-switch fi fi-angle-double-right"></span>
+<div class="face-one-nav-F-inner">
+<div class="face-one-nav-item">
+    <a href="intro.html" class="face-one-nav-item-label">指引</a>
+</div>
+<div class="face-one-nav-item">
+    <a href="index.html" class="face-one-nav-item-label">文档</a>
+</div>
+<!-- face-one-nav-item--group-on 控制默认展开 -->
+<!-- <div class="face-one-nav-item face-one-nav-item--group face-one-nav-item--group-on">
+    <span class="face-one-nav-item-switch fi fi-down"></span>
+    <span class="face-one-nav-item-label">
+        文档
+    </span>
+    <div class="face-one-nav-item-group">
+        <div class="face-one-nav-item-group-title">示例</div>
+        <a href="index.html#style" class="face-one-nav-item-group-item">颜色</a>
+        <a href="index.html#border" class="face-one-nav-item-group-item">边框</a>
+    </div>
+    <div class="face-one-nav-item-group">
+        <div class="face-one-nav-item-group-title">自定义界面</div>
+        <a href="index.html#less" class="face-one-nav-item-group-item">less</a>
+    </div>
+</div> -->
+
+</div>
+</div>
+</div>
+<div class="face-one-layout-cnt">
+<div id="face-one-cnt" class="face-one-cnt markdown-body">
+<div id="face-one-sidebar" class="face-one-sidebar"></div>
+<h1 id="文档" ><a class="markrun-anchor" href="../Users/nimo/Documents/git/sync-state/#文档"><span class="markrun-anchor-link"></span></a>文档</h1><blockquote>
+<p>sync-state 是语法糖</p>
+</blockquote>
+<pre><code class="lang-js">&lt;<span class="hljs-selector-tag">input</span>
+    syncState(this, <span class="hljs-string">'form'</span>)(<span class="hljs-string">'name'</span>)
+/&gt;
+<span class="hljs-comment">// 等于</span>
+&lt;<span class="hljs-selector-tag">input</span>
+    value={this<span class="hljs-selector-class">.state</span><span class="hljs-selector-class">.form</span><span class="hljs-selector-class">.name</span>}
+    onChange={function(e){
+        self.setState({<span class="hljs-selector-tag">form</span>: {name: e<span class="hljs-selector-class">.target</span><span class="hljs-selector-class">.value</span>}})
+    }}
+/&gt;
+</code></pre>
+
+    <div class="face-one-code  face-one-code--open ">
+                        <div class="face-one-code-F-view">
+                            <div class="face-one-code-example">
+                                <div id="basic-demo" ></div>
+                            </div>
+                            <div class="face-one-code-info">
+                                <div class="face-one-code-info-title">基础使用</div>
+                                <div class="face-one-code-info-desc">
+                                    
+                                </div>
+                                <span class="face-one-code-info-switchCode fi fi-code"></span>
+                            </div>
+                        </div>
+                        <div class="face-one-code-source">
+                            <div class="face-one-code-source-tool">
+                                <span class="face-one-code-source-tool-copy fi fi-files-o"></span>
+                            </div>
+                            <pre><code class="lang-js">var React = require(<span class="hljs-string">'react'</span>)
+var jsonFormat  = require(<span class="hljs-string">'json-format'</span>)
+var syncState = require(<span class="hljs-string">'sync-state'</span>)
+var Count = require(<span class="hljs-string">'./Count'</span>)
+var Range = require(<span class="hljs-string">'./Range'</span>)
+var RandomArray = require(<span class="hljs-string">'./RandomArray'</span>)
+class Basic extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            form: {
+                name: <span class="hljs-string">'abc'</span>
+            }
+        }
+    }
+    render () {
+        var self = this
+        var <span class="hljs-keyword">sync</span> = syncState(this, <span class="hljs-string">'form'</span>)
+        <span class="hljs-keyword">return</span> (
+            <span class="hljs-symbol">&lt;div&gt;</span>
+                <span class="hljs-symbol">&lt;pre&gt;</span>{jsonFormat(this.state)}&lt;/<span class="hljs-keyword">pre</span>&gt;
+                <span class="hljs-symbol">&lt;h2&gt;</span>简单&lt;/h2&gt;
+                &lt;<span class="hljs-built_in">input</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">"text"</span> {...<span class="hljs-keyword">sync</span>(<span class="hljs-string">'name'</span>)}  /&gt;
+                &lt;<span class="hljs-built_in">input</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">"text"</span> {...<span class="hljs-keyword">sync</span>(<span class="hljs-string">'user.title'</span>)}  /&gt;
+                <span class="hljs-symbol">&lt;h2&gt;</span>数组&lt;/h2&gt;
+                &lt;RandomArray {...<span class="hljs-keyword">sync</span>(<span class="hljs-string">'random'</span>)} /&gt;
+                <span class="hljs-symbol">&lt;h2&gt;</span>别名 &amp; defaultValue&lt;/h2&gt;
+                alia<span class="hljs-variable">s:</span> value <span class="hljs-keyword">change</span>
+                {/*
+                   &lt;Count <span class="hljs-built_in">count</span>={<span class="hljs-number">1</span>} onMount={<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(count)</span>{...}} /&gt;</span>
+                */}
+               &lt;Count
+                   {
+                       ...<span class="hljs-keyword">sync</span>(<span class="hljs-string">'age'</span>, {
+                           defaultValue: <span class="hljs-number">10</span>,
+                           prop<span class="hljs-variable">s:</span> <span class="hljs-string">'count'</span>,
+                           <span class="hljs-keyword">change</span>: <span class="hljs-string">'onMount'</span>
+                       })
+                   }
+               /&gt;
+               <span class="hljs-symbol">&lt;h2&gt;</span>复杂别名&lt;/h2&gt;
+               {/*
+                   &lt;Range start={<span class="hljs-number">1</span>} end={<span class="hljs-number">2</span>} onChange={fucntion (start, end) {}} /&gt;
+                */}
+               &lt;Range
+                    {
+                        ...<span class="hljs-keyword">sync</span>(<span class="hljs-string">'range'</span>, {
+                            defaultValue: [<span class="hljs-number">1</span>, <span class="hljs-number">4</span>],
+                            prop<span class="hljs-variable">s:</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(value)</span> {</span>
+                                <span class="hljs-keyword">return</span> {
+                                    <span class="hljs-keyword">star</span><span class="hljs-variable">t:</span> value[<span class="hljs-number">0</span>],
+                                    end: value[<span class="hljs-number">1</span>]
+                                }
+                            },
+                            <span class="hljs-keyword">sync</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(start, end)</span> {</span>
+                                <span class="hljs-keyword">return</span> [start, end]
+                            }
+                        })
+                    }
+               /&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+
+module.exports = Basic
+
+</code></pre>
+                        </div>
+                        
+                    </div></div>
+</div>
+</div>
+</div>
+<script>
+Array.from(document.querySelectorAll('.face-one-nav-item-label')).forEach(function (node) {
+    if (node.href) {
+        var pathname = node.href.replace(/\?.*/, '')
+        if (pathname === location.origin + location.pathname + location.hash) {
+            node.setAttribute('class', node.getAttribute('class') + ' ' + 'face-one-nav-item-label--on')
+        }
+    }
+})
+var faceOneGetParent = function faceOneGetParent (el, className) {
+   if (el.parentNode.nodeName.toLowerCase() === 'html') {
+       return null
+   }
+   var parentClassName = el.parentNode.getAttribute('class')
+   var classNames = ''
+   if (parentClassName) {
+       classNames = parentClassName.split(' ')
+   }
+   if (classNames.indexOf(className) !== -1) {
+       return el.parentNode
+   }
+   else {
+       return faceOneGetParent(el.parentNode, className)
+   }
+}
+Array.from(document.querySelectorAll('.face-one-nav-item-group-item')).forEach(function (node) {
+    addAvativeClass(node)
+    function addAvativeClass (node)  {
+        if (node.href) {
+            var pathname = node.href.replace(/\?.*/, '')
+            if (pathname === location.origin + location.pathname + location.hash) {
+                node.setAttribute('class', node.getAttribute('class') + ' ' + 'face-one-nav-item-group-item--on')
+                var parentNode = faceOneGetParent(node, 'face-one-nav-item--group')
+                if (parentNode) {
+                    parentNode.setAttribute('class', parentNode.getAttribute('class') + ' ' + 'face-one-nav-item--group-on')
+                }
+            }
+        }
+    }
+
+})
+</script>
+<div class="face-one-foot">
+    <div class="face-one-foot-F-inner">
+        <div class="face-one-foot-group">
+            <div class="face-one-foot-group-title">
+                <span class="face-one-foot-group-title-icon fi fi-github"></span>
+                Github
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/sync-state" class="face-one-foot-group-item-link">sync-state</a>
+                - 项目源码
+            </div>
+        </div>
+        <div class="face-one-foot-group">
+            <div class="face-one-foot-group-title">
+                <span class="face-one-foot-group-title-icon fi fi-link"></span>
+                相关站点
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://onface.github.io/component-spec">component-spec</a>
+                - 组件规范
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/module" class="face-one-foot-group-item-link">module</a>
+                - 开源项目脚手架
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="http://onface.cc/" class="face-one-foot-group-item-link">onface.cc</a>
+                - 资源集合
+            </div>
+        </div>
+        <div class="face-one-foot-group">
+            <div class="face-one-foot-group-title">
+                <span class="face-one-foot-group-title-icon fi fi-team"></span>
+                社区
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/sync-state/issues" class="face-one-foot-group-item-link">Github issues</a>
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/sync-state/issues/new" class="face-one-foot-group-item-link">提交bug</a>
+            </div>
+        </div>
+        <div class="face-one-foot-copyright">
+            <a href="../index.html" class="face-one-foot-copyright-title">
+                <img src="theme/media/logo.svg" class="face-one-foot-copyright-title-logo" />
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="theme/jquery.js"></script>
+<script>delete window.$</script>
+<script src="theme/face/face.js" ></script>
+<script data-markrun-lastrun="true">
+                        document.write('<scri' + 'pt src="./basic.demo.js?v=0.1.0"' + '" ></sc' + 'ript>')
+                        </script></body>
+</html>
