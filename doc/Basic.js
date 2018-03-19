@@ -1,4 +1,5 @@
 var React = require('react')
+var jsonFormat  = require('json-format')
 var syncState = require('sync-state')
 var Count = require('./Count')
 var Range = require('./Range')
@@ -7,15 +8,17 @@ class Basic extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: 'abc'
+            form: {
+                name: 'abc'
+            }
         }
     }
     render () {
         var self = this
-        var sync = syncState(this)
+        var sync = syncState(this, 'form')
         return (
             <div>
-                <pre>{JSON.stringify(this.state)}</pre>
+                <pre>{jsonFormat(this.state)}</pre>
                 simple:
                 <input type="text" {...sync('name')}  />
                 <input type="text" {...sync('user.title')}  />

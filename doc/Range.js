@@ -12,14 +12,14 @@ class Range extends React.Component {
         return (
             <div>
                 <select className="rangeStart" value={self.props.start} onChange={function (e) {
-                        self.props.onChange(e.target.value, self.props.end)
+                        self.props.onChange(parseInt(e.target.value), parseInt(self.props.end))
                     }} >
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                 </select>
                 <select className="rangeEnd" value={self.props.end} onChange={function (e) {
-                        self.props.onChange(self.props.start, e.target.value)
+                        self.props.onChange(parseInt(self.props.start), parseInt(e.target.value))
                     }} >
                     <option value="4">4</option>
                     <option value="5">5</option>
